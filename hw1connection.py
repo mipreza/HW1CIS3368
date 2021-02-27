@@ -37,5 +37,59 @@ def execute_read_query(connection, query):
 connection = create_connection("cis3368dbid.cc9zm0jrngaw.us-east-1.rds.amazonaws.com", "mperez39", "Krowczyk0531!", "CIS3368db")
 
 
-select_users = "SELECT * FROM contacts"
-users = execute_read_query(connection, select_users)
+class Contacts:
+    contactList = []
+    def __init__(self, id, contact_details, creation_date):
+        self.id = id
+        self.contactDetails = contactDetails
+        self.creationDate = creationDate
+
+    def menu(): 
+        ans = True
+        while ans:
+    # this is the simple menu function
+            print("--------------------------------------------------------------------") 
+            print("\t\t\tMENU", flush=False) 
+            print("--------------------------------------------------------------------")  
+            print("a - Add contact") 
+            print("d - Remove contact") 
+            print("u - Update contact details") 
+            print("b - Output all contacts in alphabetical order") 
+            print("c - Output all contacts by creation date") 
+            print("o - Output all contacts") 
+            print("q - Quit") 
+
+        ans = int(input("Choose an option: ")) 
+      
+        return ans
+
+    def add_contact(self):
+        if ans=='a':
+            print("\nContact added")
+    def remove_contact(self):
+        elif ans=='d':
+            print("\nContact removed")
+    def update_contact(self):
+        elif ans=='u':
+            print("\nContact details updated")
+    def output_alphabetic(self):
+        elif ans=='b':
+            print("\nContacts in alphabetical order")
+    def output_creation_date(self):
+        elif ans=='c':
+            print("\nContacts by creation date")
+    def output_contacts(self):
+        elif ans=='o':
+            print("\nAll contacts")
+        select_contacts = "SELECT * FROM contacts"
+        results = execute_read_query(connection, select_contacts)
+        for result in results:
+            print(result)
+
+    def quit():
+        elif ans=='q':
+            print("\nQuitting...")
+            ans==None
+
+        else:
+            print("\nNot Valid, try again...")
