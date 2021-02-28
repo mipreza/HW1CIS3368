@@ -61,12 +61,14 @@ def option1(): #here is the code to add a contact to the table
     results = execute_read_query(connection, adding)
     for result in results:
         print(result)
+        connection.commit()
         print("Contact added.")
 
 def option2(): #here the user gets to choose which row to delete by using the id
     id_to_delete = '%s'
     delete = "DELETE FROM contacts WHERE id = %s" % (id_to_delete)
     execute_query(connection, delete)
+    connection.commit()
     print("Contact removed.")
 
 def option3(): #for this option I am updating the contacts using the id
@@ -76,6 +78,7 @@ def option3(): #for this option I am updating the contacts using the id
     SET contactDetails = %s
     WHERE id = %s """ % (new_id)
     execute_query(connection, update_id)
+    connection.commit()
     print("Contact updated.")
 
 def option4(): #this option will order the contacts in alphabetical order
@@ -84,6 +87,7 @@ def option4(): #this option will order the contacts in alphabetical order
      ORDER_BY contactDetails;
      """
     execute_read_query(connection, alpha)
+    connection.commit()
     print("Contacts in alphabetical order.")
 
 def option5(): #this option will order the contacts in numerical order of the date
@@ -92,6 +96,7 @@ def option5(): #this option will order the contacts in numerical order of the da
     ORDER_BY creationDate;
     """
     execute_read_query(connection, creation)
+    connection.commit()
     print("Contacts in creation date order.")
 
 def option6(): #this option pulls up the table from sql
